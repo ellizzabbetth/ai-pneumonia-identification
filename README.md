@@ -132,6 +132,8 @@ For this project, you will complete the following steps that are derived from th
 * Device limitations, including diseases/conditions/abnormalities for which the device has been found ineffective and should not be used
 * Explain how a false positive or false negative might impact a patient
 
+
+
 **2. Algorithm Design and Function**
 
 In this section, describe your _fully trained_ algorithm and the DICOM header checks that you have built around it. Include a flowchart that describes the following: 
@@ -164,6 +166,7 @@ Describe the algorithm's final performance after training was complete by showin
 
 Finally, report the threshold for classification that you chose and the corresponded F1 score, recall, and precision. Give one or two sentences of explanation for why you chose this threshold value. 
 
+
 **4. Databases**
 
 For the database of patient data used, provide specific information about the training and validation datasets that you curated separately, including: 
@@ -177,6 +180,10 @@ For the database of patient data used, provide specific information about the tr
 **5. Ground Truth**
 
 The methodology used to establish the ground truth can impact reported performance. Describe how the NIH created the ground truth for the data that was provided to you for this project. Describe the benefits and limitations of this type of ground truth.  
+
+The limitation of the dataset based on the training set ... https://knowledge.udacity.com/questions/958581
+
+
 
 **6. FDA Validation Plan**
 
@@ -197,3 +204,9 @@ You will simply _describe_ how a FDA Validation Plan would be conducted for your
 **References
 
 1. https://arxiv.org/pdf/1711.05225.pdf
+
+2. Pausing and Resume model training
+
+https://knowledge.udacity.com/questions/958581
+
+

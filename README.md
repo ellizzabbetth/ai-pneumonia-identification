@@ -206,7 +206,7 @@ You will simply _describe_ how a FDA Validation Plan would be conducted for your
 1. https://arxiv.org/pdf/1711.05225.pdf
 
 2. Pausing and Resume model training
-
+3. https://fullstackdeeplearning.com/course/2022/lecture-6-continual-learning/
 https://knowledge.udacity.com/questions/958581
-
+4. https://www.geeksforgeeks.org/precision-recall-curve-ml/
 

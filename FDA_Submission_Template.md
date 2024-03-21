@@ -31,7 +31,7 @@ False positive indicate the presence of pneumonia. All positive reports of pneum
 
 << Insert Algorithm Flowchart >>
 ![](screenshots/lambda_function.png)
-
+![](out/Age_Distribution.png)
 **DICOM Checking Steps:**
 
 Modality should be "DX", otherwise an error is printed rather than a prediction
@@ -60,8 +60,10 @@ VGG16 -> Flatten -> Dense(512) -> Dropout(0.3) -> Dense(256) -> Dense(1)
 * Layers of pre-existing architecture that were fine-tuned
 * Layers added to pre-existing architecture
 
+![](out/Model_Training_Performance.png)
 
 ![](screenshots/roc.png)
+![](out/ROC_Curve.png)
 The ROC curve confirms that the model learned at least something from the data.
 
 << Insert algorithm training performance visualization >> 
@@ -69,6 +71,10 @@ The ROC curve confirms that the model learned at least something from the data.
 
 << Insert P-R curve >>
 ![](screenshots/precision_vs_recall.png)
+![](out/precision-recall.png)
+![](out/pr_plot.png)
+![](out/plot_auc.png)
+
 Figure X. Precision-Recall Curve for threshold selection by maximizing Recall
 
 Confusion Matrix: Optimize by ROC determined Threshold:
@@ -77,11 +83,15 @@ Confusion Matrix: Optimize by ROC determined Threshold:
 |Positive|0|0|
 |Negative|0 |0|
 
-Optimize by F1 determined Threshold:
+
+
+Optimize by F1 determined Threshold: - Confusion Matrix
 |F1 Thresh|Positive|Negative|
 |--------|---------|---------|
 |Positive|0|0|
 |Negative|0 |0| 
+
+![](out/confusion_matrix.png)
 
 Maximize Recall by Selecting Threshold with 0 Recall, Threshold of 0.0:
 |ROC Thresh|Positive|Negative|
@@ -93,19 +103,23 @@ Maximize Recall by Selecting Threshold with 0 Recall, Threshold of 0.0:
 The threshold is the best F1 score in conjunction with accuracy.
 The final probability threshold selected to determine if an image contains pneumonia signs is 0.6.
 
+![](out/score_threshold.png)
 
 ### 4. Databases
  (For the below, include visualizations as they are useful and relevant)
+In the NIH dataset there are X images with Pneumonia detected. The rate of Pneumonia in the total population (NIH dataset) is around 1%.
 
 **Description of Training Dataset:**
 For the training data set, the positive to negative images must be equal in number.
-Demographics such as age and gender reflect the general data set.
+Demographics such as age and gender reflect the general data set. The training dataset contains 80% of the available images presenting Pneumonia.
+
 Number of images:
 Number of Positive Pneumonia:
 Number of Negative Pneumonia:
 
 **Description of Validation Dataset:** 
-For the validation data set, the demographics must reflect the general data set.
+For the validation data set, the demographics must reflect the general data set. The validation dataset contains 20% of the available Pneumonia samples. This amounts to a 20/80 split of samples in the NIH dataset. It is estimated that roughly 20% of the images present with Pneumonia.
+
 Number of images:
 Number of Positive Pneumonia:
 Number of Negative Pneumonia:
@@ -127,4 +141,20 @@ To bypass inaccuracies introduced by NLP, a digital form should be provided to R
 
 **Algorithm Performance Standard:**
 <br>Based on the provided paper by P.Rajpurkarpar, et al., the performance standard is F1 scores comparing radiologists and algorithms.  F1 scores are the harmonic average of the precision and recall of the models.
-<br>Rajpurkarpar's CheXNet algorithm achieve an F1 score of 0.435???, while Radiologists averaged an F1 score of 0.387.  These would be the benchmarks to compare newly developed algorihms to. 
+<br>Rajpurkarpar's CheXNet algorithm achieve an F1 score of 0.435, while Radiologists averaged an F1 score of 0.387.  These would be the benchmarks to compare newly developed algorihms to. 
+
+
+
+
+Sensitivity
+Sensitivity is a metric that tells us among ALL the positive cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true positive. In other words, it measures the proportion of accurately-identified positive cases.
+
+You can think of highly sensitive tests as being good for ruling out disease. If someone has a negative result on a highly sensitive algorithm, it is extremely likely that they don’t have the disease since a high sensitive algorithm has low false negative.
+
+Specificity
+Specificity measures ALL the negative cases in the dataset, how many of them are successfully identified by the algorithm, i.e. the true negatives. In other words, it measures the proportion of accurately-identified negative cases.
+
+You can think of highly specific tests as being good for ruling in disease. If someone has a positive result on a highly specific test, it is extremely likely that they have the disease since a high specific algorithm has low false positive.
+
+Dice coefficient
+The dice coefficient measures the overlap of algorithm output and true labels. It is used to assess the performance of segmentation and localization.

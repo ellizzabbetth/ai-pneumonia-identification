@@ -1,8 +1,10 @@
 # FDA  Submission
 
 **Your Name:**
+Elizabeth Bradley
 
 **Name of your Device:**
+Pneumonia Detection Assistant
 
 ## Algorithm Description 
 
@@ -13,7 +15,7 @@ This algorithm is used to assist radiologists in detecting pneumonia in a chest 
 
 
 **Indications for Use:**
-
+Algorithm can be used to screen both male and female patients. Patients may present other diseases such as Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion, Emphysema, Fibrosis, Hernia, Infiltration, Mass, Nodule, Pleural_Thickening, Pneumonia, Pneumothorax which are more or less comorbid with pneumonia.
 
 
 **Device Limitations:**
@@ -32,6 +34,8 @@ False positive indicate the presence of pneumonia. All positive reports of pneum
 << Insert Algorithm Flowchart >>
 ![](screenshots/lambda_function.png)
 ![](out/Age_Distribution.png)
+
+
 **DICOM Checking Steps:**
 
 Modality should be "DX", otherwise an error is printed rather than a prediction
@@ -54,11 +58,20 @@ VGG16 -> Flatten -> Dense(512) -> Dropout(0.3) -> Dense(256) -> Dense(1)
 
 **Parameters:**
 * Types of augmentation used during training
-* Batch size
-* Optimizer learning rate
-* Layers of pre-existing architecture that were frozen
-* Layers of pre-existing architecture that were fine-tuned
+* Batch size: 32
+* Optimizer learning rate: 5e-5
+* Layers of pre-existing architecture that were frozen: first 20 layers
+* Layers of pre-existing architecture that were fine-tuned: None
 * Layers added to pre-existing architecture
+Flatten
+Dense 4096, Activation = ReLU
+Dropout 0.6
+Dense 128, Activation = ReLU
+Dropout 0.5
+Dense 256, Activation = ReLU
+Dropout 0.5
+Dense 1, Activation = Sigmoid
+
 
 ![](out/Model_Training_Performance.png)
 
@@ -77,27 +90,20 @@ The ROC curve confirms that the model learned at least something from the data.
 
 Figure X. Precision-Recall Curve for threshold selection by maximizing Recall
 
-Confusion Matrix: Optimize by ROC determined Threshold:
-|ROC Thresh|Positive|Negative|
-|--------|---------|---------|
-|Positive|0|0|
-|Negative|0 |0|
 
 
 
 Optimize by F1 determined Threshold: - Confusion Matrix
 |F1 Thresh|Positive|Negative|
 |--------|---------|---------|
-|Positive|0|0|
-|Negative|0 |0| 
+|Positive|29|107|
+|Negative|9 |55| 
 
 ![](out/confusion_matrix.png)
 
-Maximize Recall by Selecting Threshold with 0 Recall, Threshold of 0.0:
-|ROC Thresh|Positive|Negative|
-|--------|---------|---------|
-|Positive|0|0|
-|Negative|0 |0| 
+
+Dice coefficient: 0.3333333333333333
+
 
 **Final Threshold and Explanation:**
 The threshold is the best F1 score in conjunction with accuracy.
@@ -113,16 +119,16 @@ In the NIH dataset there are X images with Pneumonia detected. The rate of Pneum
 For the training data set, the positive to negative images must be equal in number.
 Demographics such as age and gender reflect the general data set. The training dataset contains 80% of the available images presenting Pneumonia.
 
-Number of images:
-Number of Positive Pneumonia:
-Number of Negative Pneumonia:
+Number of images: 2288
+Number of Positive Pneumonia: 1144
+Number of Negative Pneumonia: 1144
 
 **Description of Validation Dataset:** 
 For the validation data set, the demographics must reflect the general data set. The validation dataset contains 20% of the available Pneumonia samples. This amounts to a 20/80 split of samples in the NIH dataset. It is estimated that roughly 20% of the images present with Pneumonia.
 
-Number of images:
-Number of Positive Pneumonia:
-Number of Negative Pneumonia:
+Number of images: 1430
+Number of Positive Pneumonia: 1144
+Number of Negative Pneumonia:  286
 
 ### 5. Ground Truth
 
@@ -141,9 +147,13 @@ To bypass inaccuracies introduced by NLP, a digital form should be provided to R
 
 **Algorithm Performance Standard:**
 <br>Based on the provided paper by P.Rajpurkarpar, et al., the performance standard is F1 scores comparing radiologists and algorithms.  F1 scores are the harmonic average of the precision and recall of the models.
-<br>Rajpurkarpar's CheXNet algorithm achieve an F1 score of 0.435, while Radiologists averaged an F1 score of 0.387.  These would be the benchmarks to compare newly developed algorihms to. 
+<br>Rajpurkarpar's CheXNet algorithm achieve an F1 score of 0.435, while Radiologists averaged an F1 score of 0.33142857142857146.  These would be the benchmarks to compare newly developed algorihms to. 
 
 
+Algorithm Performance Metrics
+|Precision|Recall|Threshold|F1 Score|
+|--------|---------|---------|---------|
+|0.2116788321167883|0.7631578947368421|0.4898448|0.33142857142857146|
 
 
 Sensitivity

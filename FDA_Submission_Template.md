@@ -71,7 +71,10 @@ Dropout 0.5
 Dense 1, Activation = Sigmoid
 
 
-![](out/Model_Training_Performance.png)
+![](out/Loss_vs_Epoch_Evolution.png)
+
+![](out/Accuracy_vs_Epoch_Evolution.png)
+
 
 
 ![](out/ROC_Curve.png)
@@ -105,13 +108,9 @@ Dice coefficient: 0.3333333333333333
 The threshold is the best F1 score in conjunction with accuracy.
 The final probability threshold selected to determine if an image contains pneumonia signs is 0.6.
 
-![](out/score_threshold.png)
+![](out/Model_Training_Performance.png)
 
 ### 4. Databases
-
-Total Pneumonia cases: 1430
-Total Non-Pneumonia cases: 110674
-In this dataset, the percentage of pneumonia cases is 1.28%
 
 **Description of Training Dataset:**
 For the training data set, the positive to negative images must be equal in number.

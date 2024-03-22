@@ -31,6 +31,9 @@ False positive indicate the presence of pneumonia. All positive reports of pneum
 
 
 ![](out/lambda_function.png)
+
+The diagram below shows the age distribution.
+
 ![](out/Age_Distribution.png)
 
 

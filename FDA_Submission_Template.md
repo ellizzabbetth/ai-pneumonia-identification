@@ -109,6 +109,10 @@ The final probability threshold selected to determine if an image contains pneum
 
 ### 4. Databases
 
+Total Pneumonia cases: 1430
+Total Non-Pneumonia cases: 110674
+In this dataset, the percentage of pneumonia cases is 1.28%
+
 **Description of Training Dataset:**
 For the training data set, the positive to negative images must be equal in number.
 Demographics such as age and gender reflect the general data set. The training dataset contains 80% of the available images presenting Pneumonia.
